@@ -23,12 +23,17 @@ public class ATM {
      * if statements were used
      * because today's lesson was
      * on program control
+     * Still some rounding issues
+     * likely caused by Math.floor()
      *******************/
-    public static void coinChecker(){
+    public static void coinChecker() throws Exception{
         System.out.print("Please enter a value: ");
         Scanner coinC = new Scanner(System.in);
        double checker = coinC.nextDouble();
-       int quarters = (int)Math.floor(checker);
+       if (checker < 0){
+           throw new Exception("Invalid coin amount");
+       }
+       double quarters = Math.floor(checker);
        double others = checker - quarters;
        int dimes = 0;
        int nickles = 0;
@@ -68,7 +73,7 @@ public class ATM {
        if (others >= .01){
            if (others >= .02){
                if (others >= .03){
-                   if (others == .04){
+                   if (others >= .04 && others < .05){
                        others -= .04;
                        pennies+= 4;
                    }else {
@@ -84,14 +89,16 @@ public class ATM {
                pennies++;
            }
        }
-
-       System.out.println("The smallest number of coins is:");
-       System.out.println("Coin\t\t\tAmount");
+       System.out.println("\nThe smallest number of coins is:");
        System.out.println("**********************");
-       System.out.println("Quarters\t\t" + quarters);
-       System.out.println("Dimes\t\t\t" + dimes);
-       System.out.println("Nickles\t\t\t" + nickles);
-       System.out.println("Pennies\t\t\t" + pennies);
+       System.out.println("* Coin\t\tAmount   *");
+       System.out.println("**********************");
+       System.out.println("* Quarters\t\t" + (int)quarters + "\t *");
+       System.out.println("* Dimes\t\t\t" + dimes + "\t *");
+       System.out.println("* Nickles\t\t" + nickles + "\t *");
+       System.out.println("* Pennies\t\t" + pennies + "\t *");
+       System.out.println("**********************\n");
+
 
 
     }

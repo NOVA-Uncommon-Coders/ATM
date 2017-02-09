@@ -11,6 +11,9 @@ public class ATMUser {
     /********************
      * Constructors
      *******************/
+    public ATMUser(){
+        balance = 150.45;
+    }
     public ATMUser(double balance) {
         this.balance = balance;
     }
@@ -26,7 +29,10 @@ public class ATMUser {
         this.name = name;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(Double balance) throws Exception{
+        if (balance < 0){
+            throw new Exception("Invalid balance");
+        }
         this.balance = balance;
     }
 
@@ -81,6 +87,7 @@ public class ATMUser {
                     return;
                 case "COIN CHECKER":
                 case "COINCHECKER":
+                    menuDisplay("Coin Checker");
                     ATM.coinChecker();
                     break;
                 default:
@@ -107,7 +114,7 @@ public class ATMUser {
             setBalance(getBalance()-withdrawAmount);
         }
     }
-    public void checkBalance() throws Exception{
+    public void checkBalance() {
         System.out.println("Check Balance");
         System.out.println("Your balance is: " + balance);
     }
