@@ -1,46 +1,87 @@
 package com.theironyard.novauc;
 
+
+import jdk.nashorn.internal.ir.WhileNode;
+
 import java.util.Scanner;
 
 
 public class Main {
 
+
     public static void main(String[] args) throws Exception {
-        // write your code here
+        Scanner scanner = new Scanner(System.in);
+        int balance = 100;
+        int withdraw = 100-50;
+        double take = 50;
 
 
+        System.out.println("Hello, how are you? Please enter your name.");
+        String name = scanner.nextLine();
+
+        if (name.isEmpty()) {
+            throw new Exception("Ask for name");
+        }
+            System.out.println("Please select following options. 1.balance 2.Withdrawl funds 3 cancel");
+            String options = scanner.nextLine();
+
+        switch (options){
+            case "1":
+             System.out.println("Your balance " + balance);
+             break;
+            case  "2":
+             System.out.println(("How much would you like to withdraw?"));
+           String money = scanner.nextLine();
+             int withdrawl = Integer.valueOf(money);
+             if(withdrawl > balance){
+                 throw new Exception("Insufficent Funds");
+             } else{
+                 System.out.println("Thank you, please take your money ");
+             }
+
+             System.out.println("Withdraw money " + withdraw);
+              System.out.println("Your new balance is " + take );
+              break;
+            case  "3":
+                System.out.println("Thank you please come again.");
+                System.exit(0);
 
 
-
-
-
-        System.out.println("What would you like to do?[1.Check balance 2.Withdtraw funds 3.Cancel]");
-        String options = scanner.nextLine();
-
-        if (options.equalsIgnoreCase("Check balance")) {
-            System.out.println("zero balance");
-
-        } else if (options.equalsIgnoreCase("Withdraw funds")) {
-            System.out.println("Only in Denominations of Twenty");
-
-        } else if (options.equalsIgnoreCase("Cancel")) {
-            System.out.println("Cancel...");
-
-            System.out.println("Thank you and please come again.");
-
-            Scanner scannner = new Scanner(System.in);
-
-
-
-            System.out.println("Thank you," + name);
 
 
 
 
         }
 
+
+
+
+
     }
-}
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
